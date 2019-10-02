@@ -36,7 +36,11 @@ class App {
     // -> protecao xss etc
     this.server.use(helmet());
     // -> Cross access origin
-    this.server.use(cors());
+    this.server.use(
+      cors({
+        origin: process.env.FRONT_URL_TO_CORS,
+      })
+    );
     // -> Habilita o uso de JSON
     this.server.use(express.json());
     // -> Habilita o acesso aos Files da pasta tmp
